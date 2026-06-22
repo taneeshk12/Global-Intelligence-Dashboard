@@ -40,10 +40,10 @@ Built as an advanced portfolio project, Aegis Intelligence transforms millions o
 ---
 
 ## 📊 By The Numbers
-- **100,000+** diplomatic and economic interactions processed and analyzed per dataset.
+- **343,000+** diplomatic and economic interactions actively processed and analyzed in the graph.
 - **190+** sovereign entities and thousands of organizations actively tracked.
 - **~15** distinct geopolitical blocs algorithmically detected globally via Louvain Modularity, with typical modularity scores of `> 0.45`.
-- **2,700+** nodes natively colored and clustered in the frontend network viewer.
+- **2,727** specific actors natively colored and clustered in the frontend network viewer.
 
 ---
 
