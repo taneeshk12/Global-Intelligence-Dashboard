@@ -22,7 +22,7 @@ Built as an advanced portfolio project, Aegis Intelligence transforms millions o
 ### 📡 Real-Time Stream Processing (Apache Kafka)
 - Continuously ingests 15-minute live updates from GDELT via a custom Python Producer.
 - Streams live geopolitical events through Kafka into a persistent Python Consumer thread.
-- Broadcasts breaking news directly to the browser via **WebSockets**. (The frontend maintains a true persistent WebSocket connection with the API webhook, updating the UI genuinely without `setInterval` polling).
+- Broadcasts breaking news directly to the browser via **WebSockets**. 
 
 ### 🧠 Graph Machine Learning (Neo4j GDS)
 - **Geopolitical Bloc Detection:** Implements the **Louvain Modularity Algorithm** to algorithmically detect global communities and alliances based on interaction frequency, dynamically color-coding the network graph.
