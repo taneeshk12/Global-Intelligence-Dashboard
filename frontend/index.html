@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aegis Intelligence | Global Event Monitor</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Vis.js -->
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <!-- Globe.gl -->
+    <script src="https://unpkg.com/globe.gl"></script>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Aegis Intelligence <span class="badge" style="font-size: 0.8rem; background: #ef4444; color: white; padding: 2px 6px; border-radius: 4px; vertical-align: middle; margin-left: 10px;">LIVE</span></h1>
+            <p>Tracking global events, detecting anomalies, and discovering geopolitical blocs via GDELT.</p>
+        </header>
+
+        <main>
+            <!-- Top Section: Chart & Top Actors -->
+            <div class="grid-top">
+                <!-- Trend Chart -->
+                <section class="card glassmorphism">
+                    <h2>Economic Event Trends</h2>
+                    <div class="filters">
+                        <input type="text" id="countryFilter" placeholder="Filter by Country Code (e.g. USA)">
+                        <button id="updateTrendsBtn">Update Chart</button>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- Top Actors -->
+                <section class="card glassmorphism">
+                    <h2>Top Actors by Centrality</h2>
+                    <p class="subtitle">Ranked by Neo4j PageRank score</p>
+                    <div class="table-container">
+                        <table id="topActorsTable">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Actor</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Middle Section: Sentiment & Distribution -->
+            <div class="grid-middle" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                <!-- Sentiment Leaderboard -->
+                <section class="card glassmorphism">
+                    <h2>Media Sentiment & Risk Leaderboard</h2>
+                    <p class="subtitle">Most positive vs most negative covered countries.</p>
+                    <div class="table-container">
+                        <table id="sentimentTable">
+                            <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Country</th>
+                                    <th>Avg Tone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- Conflict vs Cooperation Donut -->
+                <section class="card glassmorphism">
+                    <h2>Global Conflict vs Cooperation</h2>
+                    <p class="subtitle">Distribution based on Media Sentiment Tone.</p>
+                    <div class="chart-container" style="height: 300px; display: flex; justify-content: center;">
+                        <canvas id="sentimentDonutChart"></canvas>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Globe Section -->
+            <section class="card glassmorphism globe-section">
+                <h2>Live Event Geospatial Activity</h2>
+                <p class="subtitle">Real-time GDELT events streaming via Kafka.</p>
+                <div id="globeViz" class="globe-container"></div>
+            </section>
+
+            <!-- Bottom Section: Network Graph & Live Feed -->
+            <div class="grid-bottom" style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                <section class="card glassmorphism network-section">
+                    <h2>Actor Network Explorer</h2>
+                    <div class="search-bar">
+                        <input type="text" id="entitySearch" placeholder="Enter an Actor Name (e.g. UNITED STATES)">
+                        <button id="searchEntityBtn">Visualize Network</button>
+                    </div>
+                    <div id="networkError" class="error-msg"></div>
+                    <div id="networkGraph" class="network-container"></div>
+                </section>
+                
+                <section class="card glassmorphism">
+                    <h2>Live Event Explorer Feed</h2>
+                    <p class="subtitle">Real-time GDELT stream.</p>
+                    <div id="liveFeedList" class="live-feed-list" style="height: 500px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <!-- Events append here -->
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <!-- Live Feed Container -->
+    <div id="liveFeedContainer" class="live-feed-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

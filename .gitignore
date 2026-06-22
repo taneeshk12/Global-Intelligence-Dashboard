@@ -1,0 +1,9 @@
+gen-lang-client-0393154591-e77171e10768.json
+.env
+__pycache__/
+*.pyc
+venv/
+.DS_Store
+data/
+*.zip
+*.pkl
